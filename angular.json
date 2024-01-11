@@ -40,7 +40,7 @@
             "ssr": {
               "entry": "server.ts"
             },
-            "allowedCommonJsDependencies": ["compression"]
+            "allowedCommonJsDependencies": ["compression", "cache-manager"]
           },
           "configurations": {
             "production": {
