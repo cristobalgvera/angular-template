@@ -38,6 +38,11 @@ module.exports = {
           { default: ['signature', 'field', 'constructor', 'method'] },
         ],
         '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+        '@typescript-eslint/no-extraneous-class': [
+          'error',
+          { allowWithDecorator: true },
+        ],
+        '@typescript-eslint/unbound-method': ['error', { ignoreStatic: true }],
       },
       overrides: [
         {
