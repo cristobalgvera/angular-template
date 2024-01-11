@@ -2,7 +2,14 @@
 services:
   app:
     build:
-      args:
-        project: main
+      dockerfile: ./.devcontainer/Dockerfile
+    environment:
+      PORT: ${PORT}
     ports:
-      - 80:80
+      - ${PORT}:${PORT}
+    volumes:
+      - ./:/app
+      - node_modules:/app/node_modules/
+
+volumes:
+  node_modules:

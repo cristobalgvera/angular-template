@@ -5,7 +5,7 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-FROM nginx:alpine
-ARG project
-COPY --from=build /app/dist/$project/browser /usr/share/nginx/html
-EXPOSE 80
+FROM node:20-alpine
+WORKDIR /app
+COPY --from=build /app/dist/main .
+CMD ["node", "./server/server.mjs"]

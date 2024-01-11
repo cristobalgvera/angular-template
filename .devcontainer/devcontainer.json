@@ -1,0 +1,30 @@
+{
+  "name": "${localWorkspaceFolderBasename}",
+  // Change `../compose.yml` to `../../compose.yml`
+  // if you are using a global compose file
+  "dockerComposeFile": ["../compose.yml"],
+  "service": "app",
+  "workspaceFolder": "/app",
+
+  // Do not down the services when the devcontainer is closed
+  "shutdownAction": "none",
+
+  // Run only this service and the ones that depends on
+  "runServices": ["app"],
+
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "usernamehw.errorlens",
+        "firsttris.vscode-jest-runner",
+        "angular.ng-template"
+      ]
+    }
+  }
+}
