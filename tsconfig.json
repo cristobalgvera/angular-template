@@ -20,7 +20,7 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
-    "types": ["jest", "jest-extended"],
+    "types": ["jest", "@testing-library/jest-dom", "jest-extended"],
     "baseUrl": "./",
     "paths": {
       "@common/*": ["src/app/common/*"],
