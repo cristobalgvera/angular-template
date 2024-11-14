@@ -1,27 +1,64 @@
 # Angular Template
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
+Project to easily start an Angular project using the latest technologies.
 
-## Development server
+- Latest Angular version
+  - Server Side Rendering
+- Angular Material
+- Tailwind CSS
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+It also includes development tools to easy your workflow.
 
-## Code scaffolding
+- TypeScript
+- Jest
+- Docker
+  - VSCode DevContainer
+- ESLint
+- Prettier
+- Husky
+  - Lint-staged
+  - Commitlint
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## TL;DR
 
-## Build
+1. Bring the project to your local machine.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+   ```bash
+   pnpx tiged cristobalgvera/angular-template <PROJECT_NAME>
+   ```
 
-## Running unit tests
+1. Copy the environment file.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   ```bash
+   cp .env.example .env
+   ```
 
-## Running end-to-end tests
+1. Choose one of the following options and go to [http://localhost:4200](http://localhost:4200)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+   - Run locally.
 
-## Further help
+     ```bash
+     pnpm install
+     pnpm start
+     ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+   - Run in Docker.
+
+     ```bash
+     docker compose up --build -d app
+     ```
+
+     You can modify your files and watch the changes in real time.
+     Also, you can enter to `VSCode` and use the project inside a `DevContainer`.
+
+### Build the project
+
+> [!TIP]
+> You can choose were or how deploy the project.
+> The following use `Docker`.
+
+Create a production-ready build.
+
+```bash
+docker compose -f compose.prod.yml up --build -d app
+```
