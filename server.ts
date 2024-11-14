@@ -1,6 +1,6 @@
 import { APP_BASE_HREF } from '@angular/common';
 import { CommonEngine } from '@angular/ssr';
-import { createCache, memoryStore } from 'cache-manager';
+import { createCache } from 'cache-manager';
 import compression from 'compression';
 import express from 'express';
 import { dirname, join, resolve } from 'node:path';
@@ -10,7 +10,7 @@ import bootstrap from './src/main.server';
 
 const CACHE_TTL = +(process.env['CACHE_TTL_IN_MIN'] ?? 5) * 60 * 1_000;
 
-const memoryCache = createCache(memoryStore(), { max: 100, ttl: CACHE_TTL });
+const cache = createCache({ ttl: CACHE_TTL });
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app() {
@@ -37,7 +37,7 @@ export function app() {
     (req, res, next) => {
       console.log('Looking for route in cache: ' + req.originalUrl);
 
-      memoryCache
+      cache
         .get(req.originalUrl)
         .then((cachedHtml) => {
           if (cachedHtml) {
@@ -49,8 +49,10 @@ export function app() {
             next();
           }
         })
-        .catch((error) => {
-          console.warn(`Error while looking for route in cache: ${error}`);
+        .catch((error: unknown) => {
+          console.warn(
+            `Error while looking for route in cache: ${String(error)}`,
+          );
           next();
         });
     },
@@ -68,14 +70,14 @@ export function app() {
         .then((html) => {
           console.log(`Caching the request: ${req.originalUrl}`);
 
-          memoryCache
+          cache
             .set(req.originalUrl, html, CACHE_TTL)
             .then(() => res.send(html))
-            .catch((error) => {
-              console.warn(`Could not cache the request: ${error}`);
+            .catch((error: unknown) => {
+              console.warn(`Could not cache the request: ${String(error)}`);
             });
         })
-        .catch((error) => {
+        .catch((error: unknown) => {
           next(error);
         });
     },
