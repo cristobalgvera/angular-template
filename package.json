@@ -11,7 +11,7 @@
     "format:all": "npm run format -- .",
     "lint": "ng lint",
     "lint:types": "tsc --noEmit",
-    "prepare": "husky install",
+    "prepare": "husky",
     "serve:ssr:main": "npm run build && node dist/main/server/server.mjs"
   },
   "private": true,
