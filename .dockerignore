@@ -1,8 +1,5 @@
-*
-!/src
-!server.ts
-!package*.json
-!angular.json
-!tailwind.config.js
-!tsconfig.json
-!tsconfig.app.json
+node_modules
+.git
+.gitignore
+*.md
+dist
