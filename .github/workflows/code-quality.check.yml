@@ -1,0 +1,32 @@
+name: Code Quality Check
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-code-quality:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Checkout
+        uses: actions/checkout@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Check format
+        run: pnpm format .
+      - name: Check lint
+        run: pnpm lint
+      - name: Check types
+        run: pnpm lint:types
+      - name: Check build
+        run: pnpm build
