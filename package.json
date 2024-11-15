@@ -7,12 +7,12 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "format": "prettier --check --write --ignore-unknown",
-    "format:all": "npm run format -- .",
+    "format": "prettier --check --ignore-unknown",
+    "format:all": "pnpm format -- --write .",
     "lint": "ng lint",
     "lint:types": "tsc --noEmit",
     "prepare": "husky",
-    "serve:ssr:main": "npm run build && node dist/main/server/server.mjs"
+    "serve:ssr:main": "pnpm build && node dist/main/server/server.mjs"
   },
   "private": true,
   "dependencies": {
