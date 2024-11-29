@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "format": "prettier --check --ignore-unknown",
-    "format:all": "pnpm format -- --write .",
+    "format:all": "pnpm format --write .",
     "lint": "ng lint",
     "lint:types": "tsc --noEmit",
     "prepare": "husky",
