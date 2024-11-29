@@ -6,7 +6,6 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [CommonModule, RouterOutlet, MatSlideToggleModule, MatDividerModule],
   templateUrl: './app.component.html',
 })
