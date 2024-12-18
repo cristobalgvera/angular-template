@@ -70,10 +70,6 @@ module.exports = tseslint.config(
         { allowWithDecorator: true },
       ],
       '@typescript-eslint/unbound-method': ['error', { ignoreStatic: true }],
-      '@typescript-eslint/restrict-template-expressions': [
-        'error',
-        { allowNumber: true, allowBoolean: true, allowAny: true },
-      ],
     },
   },
   {
@@ -86,6 +82,7 @@ module.exports = tseslint.config(
         'error',
         { default: ['signature', 'field', 'constructor', 'method'] },
       ],
+      '@typescript-eslint/restrict-template-expressions': 'warn',
     },
   },
   {

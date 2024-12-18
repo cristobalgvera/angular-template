@@ -35,14 +35,14 @@ export function app() {
   server.get(
     '*',
     (req, res, next) => {
-      console.log('Looking for route in cache: ' + req.originalUrl);
+      console.info('Looking for route in cache: ' + req.originalUrl);
 
       cache
         .get(req.originalUrl)
         .then((cachedHtml) => {
           if (cachedHtml) {
             // Cached page exists. Send it.
-            console.log(`Page found in cache: ${req.originalUrl}`);
+            console.info(`Page found in cache: ${req.originalUrl}`);
             res.send(cachedHtml);
           } else {
             console.warn(`Page not found in cache: ${req.originalUrl}`);
@@ -68,7 +68,7 @@ export function app() {
           providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
         })
         .then((html) => {
-          console.log(`Caching the request: ${req.originalUrl}`);
+          console.info(`Caching the request: ${req.originalUrl}`);
 
           cache
             .set(req.originalUrl, html, CACHE_TTL)
@@ -93,7 +93,7 @@ function run(): void {
   const server = app();
 
   server.listen(port, () => {
-    console.log(`Node Express server listening on http://localhost:${port}`);
+    console.info(`Node Express server listening on http://localhost:${port}`);
   });
 }
 
